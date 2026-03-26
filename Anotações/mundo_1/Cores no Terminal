@@ -1,0 +1,243 @@
+CURSO PYTHON #11- Cores no Terminal
+# ==============================================================================
+
+ansi - escape sequence
+codigo ansi para cores em python
+
+sempre usar: \003[style, text, back m 
+	exemplo: \003[0;33;44m
+
+codigos para style = 0,1,4,7
+	0 = none
+	1 = bold
+	4 = inderline
+	7 = negative
+
+
+codigos para text = 30, 31, 32, 33, 34, 35, 36, 37
+	30 = branco
+	31 = vermelho
+	32 = verde
+	33 = amarelo
+	34 = azul
+	35 = roxo
+	36 = azul bebe
+	37 = cinza 
+
+ codigos para back = 40 a 47
+ 	40 = branco
+ 	41 = vermelho
+	42 = verde
+	43 = amarelo
+	44 = azul
+	45 = roxo
+	46 = azul bebe
+	47 = cinza 
+
+ para usar mais cores é preciso importar biblioteca.
+
+ testes:
+
+ 	fundo vermelho e texto branco: \003[0;30;41m
+
+ 	fundo azul e letra sublinhada e texto amarelo: \003[4;33;46m
+
+ 	fundo amarelo e letra roxa: \003[0;35;43m
+
+ 	fundo verde e letra branco: \003[0;30;42m
+
+ 	fundo preto e letra cinza: \003[m
+
+ 	fundo branco e letra preta: \003[7;30m
+
+estudar o modulo colorize
+
+# ==============================================================================
+#                 CURSO PYTHON #11 - CORES NO TERMINAL (ANSI)
+# ==============================================================================
+
+# A estrutura básica de um código de cor ANSI no Python é:
+# \033[ STYLE ; TEXT ; BACK m
+
+# EXEMPLO: print('\033[1;33;44m Olá Mundo! \033[m')
+# O '\033[m' no final serve para LIMPAR a formatação (Reset).
+
+# ------------------------------------------------------------------------------
+# 1. STYLE (Estilo da Fonte)
+# ------------------------------------------------------------------------------
+# 0 = None (Normal)
+# 1 = Bold (Negrito)
+# 4 = Underline (Sublinhado)
+# 7 = Negative (Inverte as cores: o que era fundo vira texto e vice-versa)
+
+# ------------------------------------------------------------------------------
+# 2. TEXT (Cores do Texto)      |    3. BACK (Cores do Fundo)
+# ------------------------------------------------------------------------------
+# 30 = Branco/Preto (Depende)  |    40 = Branco/Preto
+# 31 = Vermelho                |    41 = Vermelho
+# 32 = Verde                   |    42 = Verde
+# 33 = Amarelo                 |    43 = Amarelo
+# 34 = Azul                    |    44 = Azul
+# 35 = Roxo (Magenta)          |    45 = Roxo
+# 36 = Azul Bebê (Ciano)       |    46 = Azul Bebê
+# 37 = Cinza                   |    47 = Cinza
+
+# ------------------------------------------------------------------------------
+# 4. PRÁTICA E COMBINAÇÕES (Dicionário de Cores)
+# ------------------------------------------------------------------------------
+# Uma forma inteligente de usar no Python é criar um dicionário:
+
+cores = {
+    'limpa':    '\033[m',
+    'branco':   '\033[30m',
+    'vermelho': '\033[31m',
+    'verde':    '\033[32m',
+    'amarelo':  '\033[33m',
+    'azul':     '\033[34m',
+    'roxo':     '\033[35m',
+    'ciano':    '\033[36m',
+    'cinza':    '\033[37m',
+    'pretoebranco': '\033[7;30m'
+}
+
+print(f"Olá! Muito {cores['verde']}prazer{cores['limpa']} em te conhecer!")
+
+# ------------------------------------------------------------------------------
+# 5. TESTES RÁPIDOS (Exemplos prontos)
+# ------------------------------------------------------------------------------
+# Fundo vermelho, texto branco:        \033[0;30;41m
+# Fundo azul, texto amarelo, sublinhado:\033[4;33;44m
+# Fundo amarelo, texto roxo:           \033[0;35;43m
+# Fundo verde, texto branco:           \033[0;30;42m
+# Padrão Negativo (Invertido):         \033[7;30m
+
+# DICA: Sempre termine sua string com \033[m para que a cor não 
+# "vaze" para o resto do terminal do sistema.
+# ==============================================================================
+
+
+# ==============================================================================
+#                 BIBLIOTECAS DE CORES E ESTILIZAÇÃO NO PYTHON
+# ==============================================================================
+
+# 1. POR QUE USAR MÓDULOS EXTERNOS?
+# - Legibilidade: Ler 'Fore.RED' é mais fácil que '\033[31m'.
+# - Compatibilidade: Garante que as cores funcionem em Windows antigo e Linux.
+# - Facilidade: O 'autoreset' evita que você esqueça de fechar a cor.
+
+# ------------------------------------------------------------------------------
+# 2. MÓDULO: COLORAMA (O mais usado no mundo)
+# ------------------------------------------------------------------------------
+# Instalação: pip install colorama
+
+from colorama import Fore, Back, Style, init
+
+# O init(autoreset=True) faz a cor voltar ao normal automaticamente após cada print
+init(autoreset=True)
+
+print(f"{Fore.CYAN}{Style.BRIGHT}=== TESTANDO COLORAMA ===")
+print(Fore.RED + "Texto em Vermelho")
+print(Back.YELLOW + Fore.BLACK + "Texto Preto com Fundo Amarelo")
+print(Style.DIM + "Texto com brilho reduzido")
+
+# ------------------------------------------------------------------------------
+# 3. MÓDULO: TERMCOLOR (Sintaxe de Função)
+# ------------------------------------------------------------------------------
+# Instalação: pip install termcolor
+
+from termcolor import colored
+
+# Estrutura: colored('texto', 'cor_texto', 'cor_fundo', ['atributos'])
+texto_colorido = colored('ALERTA DE SISTEMA', 'red', 'on_white', attrs=['bold', 'blink'])
+print(texto_colorido)
+
+# ------------------------------------------------------------------------------
+# 4. DICIONÁRIO DE CORES (A melhor estratégia sem instalar nada)
+# ------------------------------------------------------------------------------
+# Se você não quiser depender de bibliotecas, crie este "Kit de Ferramentas"
+# no topo do seu código:
+
+c = {
+    'reset':  '\033[m',
+    'azul':   '\033[34m',
+    'amarelo':'\033[33m',
+    'pb':     '\033[7;30m',
+    'erro':   '\033[1;31m', # Negrito Vermelho
+    'ok':     '\033[1;32m'  # Negrito Verde
+}
+
+# Exemplo de uso prático:
+print(f"{c['erro']}ERRO!{c['reset']} O valor digitado é inválido.")
+print(f"{c['ok']}SUCESSO!{c['reset']} O triângulo pode ser formado.")
+
+# ------------------------------------------------------------------------------
+# 5. NOMENCLATURA TÉCNICA (Padrão ANSI)
+# ------------------------------------------------------------------------------
+# Magenta = Roxo/Lilas (Código 35)
+# Cyan    = Ciano/Azul Bebê (Código 36)
+# Black   = Geralmente Cinza Escuro ou Branco (depende do tema do terminal)
+
+# DICA PRO: No PyCharm, você pode visualizar as cores diretamente no console.
+# No Sublime, você precisa de um plugin chamado "ANSIescape" para ver as 
+# cores dentro do console do editor!
+# ==============================================================================
+
+# ==============================================================================
+#                 GUIA DE CORES NO PYTHON: QUANDO E COMO USAR
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. MÉTODO ANSI MANUAL (\033[style;text;backm)
+# ------------------------------------------------------------------------------
+# QUANDO USAR: Scripts rápidos, exercícios de lógica e aprendizado inicial.
+#
+# PROS:
+#   - Nativo: Não precisa instalar NADA (sem pip install).
+#   - Leve: Não carrega bibliotecas extras na memória.
+# CONTRAS:
+#   - Sintaxe "feia": Difícil de ler e dar manutenção.
+#   - Incompatibilidade: Pode falhar em versões antigas do Windows (CMD).
+
+# ------------------------------------------------------------------------------
+# 2. MÉTODO DICIONÁRIO DE CORES (O que usamos nos Desafios)
+# ------------------------------------------------------------------------------
+# QUANDO USAR: Projetos de médio porte e estudos organizados (Mundo 1 e 2).
+#
+# PROS:
+#   - Organização: Você centraliza os códigos em um só lugar.
+#   - Legibilidade: Usa nomes claros como f"{c['erro']} Texto".
+# CONTRAS:
+#   - Setup inicial: Precisa copiar o dicionário para cada novo arquivo.
+
+# ------------------------------------------------------------------------------
+# 3. MÓDULO COLORAMA (Padrão Profissional)
+# ------------------------------------------------------------------------------
+# QUANDO USAR: Softwares que serão usados por outras pessoas em sistemas variados.
+#
+# PROS:
+#   - Compatibilidade Total: Faz o Windows "entender" as cores ANSI.
+#   - Simplicidade: Usa palavras como Fore.RED e Back.GREEN.
+# CONTRAS:
+#   - Dependência: Se você enviar o código para alguém, ela precisa ter o módulo.
+
+# ------------------------------------------------------------------------------
+# 4. MÓDULO TERMCOLOR / COLORIZE
+# ------------------------------------------------------------------------------
+# QUANDO USAR: Logs de sistema e saídas visuais rápidas.
+#
+# PROS:
+#   - Sintaxe Natural: colored('Texto', 'red', 'on_blue').
+# CONTRAS:
+#   - Menos flexível: Menos controle sobre estilos de fonte específicos.
+
+# ==============================================================================
+#                 RESUMO DE ARQUITETURA (DECISÃO RÁPIDA)
+# ==============================================================================
+
+# [?] PRECISA SER RÁPIDO?          -> Use ANSI Manual (\033).
+# [?] PRECISA SER ORGANIZADO?      -> Use DICIONÁRIO de cores.
+# [?] PRECISA SER PROFISSIONAL?    -> Use COLORAMA (init, Fore, Back).
+
+# DICA PRO: No PyCharm/Sublime, o estilo "NEGATIVE" (\033[7m) é o melhor 
+# para destacar TÍTULOS de programas, pois cria uma barra sólida de cor.
+# ==============================================================================

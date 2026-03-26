@@ -1,0 +1,910 @@
+Curso de python - curso em video 
+# ==============================================================
+
+site para consultar a documentação: https://docs.python.org/release/3.14.0/
+
+'' aspas são delemitadores para mensagens
+
+todos os comandos são funções, então todas as funções tem que ter parenteses
+
+não colocar aspas com numeros
+
+Toda variavel é um objeto no python
+Toda variavel pode receber valores
+Vaivael é um espaço reservado na memoria
+
+
+Print = exibir
+input = inserir
+============================================================================
+
+
+
+
+
+
+
+# ==============================================================
+
+			Aula 06 - Tipos Primitivos e Saída de Dados
+
+# ==============================================================
+
+int(8)  - Tipo inteiro
+ex: 7, -5, 0, 92828
+
+float(8.0) - Tipo Real, flutuante
+ex: 4.5, 00.76, 7.0
+
+bool (Verdade ou Falso) - Tipo  Valores logicos ou Boleanos 
+ex: Valor True ou Valor False - Sempre usar a primeira letra maiuscula
+
+str(a,b,c) - Tipo Valores caracteres ou strings 
+ex: 'Olá', '7.5', ' ' - palavras sempre tem que estar entre aspas
+
+juntar uma string na outra se chama concatenação
+
+-------------------------------------
+print('A soma vale ()'.format(s)) - Formatação com sintaxe com .format
+
+# --- FORMATAÇÃO COM .format() ---
+# Objetivo: Inserir valores de variáveis dentro de uma frase.
+# Como funciona: As chaves {} funcionam como "buracos" onde o valor da variável será encaixado.
+
+# 1. Use as chaves {} dentro das aspas.
+# 2. Use .format(nome_da_variavel) logo após as aspas.
+
+	s = 15
+	print('A soma vale {}'.format(s))
+
+# Vantagens:
+# - Mais limpo: evita fechar aspas e usar vírgulas o tempo todo.
+# - Automático: o Python converte números para texto sozinho dentro das chaves.
+
+# --- QUANDO USAR O .FORMAT() ---
+# 1. ORGANIZAÇÃO: Quando a frase tem muitas variáveis e o uso de vírgulas ou '+' fica confuso.
+# 2. LIMPEZA: Para não precisar abrir e fechar aspas várias vezes.
+# 3. CONTROLE: Quando você quer formatar o dado (ex: limitar casas decimais).
+# 4. PADRONIZAÇÃO: Para manter o código compatível com versões comuns do Python 3.
+
+# EXEMPLO PRÁTICO:
+	s = 10
+	print('A soma vale {}'.format(s)) # O {} é o espaço reservado para a variável 's'
+--------------------------------------------------------------------------
+
+# --- MÉTODOS DE TESTE (IS...) ---
+# Servem para verificar o conteúdo de uma string. Retornam True ou False.
+
+algo = input('Digite algo: ')
+
+# .isalpha() -> É alfabético? (Apenas letras)
+print('É apenas letras?', algo.isalpha())
+
+# .isnumeric() -> É numérico? (Apenas números)
+print('É apenas números?', algo.isnumeric())
+
+# .isalnum() -> É alfanumérico? (Letras e/ou números. Não aceita símbolos)
+print('É letras e números?', algo.isalnum())
+
+# .isupper() -> Está tudo em MAIÚSCULAS?
+print('Está em maiúsculas?', algo.isupper())
+
+# .islower() -> Está tudo em minúsculas?
+print('Está em minúsculas?', algo.islower())
+
+# .isspace() -> Só tem espaços em branco?
+print('São só espaços?', algo.isspace())
+
+# .istitle() -> Está capitalizada? (Ex: Nome Próprio)
+print('Está capitalizada?', algo.istitle())
+
+=============================================================================
+
+
+
+
+
+# ==============================================================
+	
+					Aula 07 - Operadores Aritméticos
+
+# ==============================================================
+
+Operadores no python:
+
++ Adição
+- Subtração
+* Mutiplicação
+/ Divisão
+** potencia
+// divisão inteira
+% resto da divisão
+
+quando vc quer testar se uma coisa é igual a outra usar ==
+
+-----------------------------------------------------------------
+
+# --- OPERADORES ARITMÉTICOS ---
+# +  Adição
+# -  Subtração
+# * Multiplicação
+# /  Divisão (gera resultado com vírgula)
+# // Divisão Inteira (descarta a vírgula)
+# %  Resto da Divisão (Módulo)
+# ** Potência (Ex: 2**3 = 8)
+
+# --- OPERADORES DE ATRIBUIÇÃO VS COMPARAÇÃO ---
+
+# = (RECEBE): Serve para guardar um valor na variável.
+# Ex: nome = 'Python' (A variável nome RECEBE o texto 'Python')
+
+# == (IGUAL A): Serve para testar se uma coisa é igual a outra.
+# Ex: s == 10 (Pergunta: o valor de s É IGUAL a 10?) -> Retorna True ou False
+
+# --- OUTROS COMPARADORES ---
+# !=  Diferente de
+# >   Maior que
+# <   Menor que
+# >=  Maior ou igual a
+# <=  Menor ou igual a
+
+# EXEMPLO PRÁTICO:
+n1 = 5 # n1 recebe 5
+n2 = 5 # n2 recebe 5
+print(n1 == n2) # Saída: True (pois 5 é igual a 5)
+
+Dica para o leigo:
+
+Pense no = como uma seta: x = 10 (x ← 10).
+
+Pense no == como uma pergunta: x == 10? (x é igual a 10?).
+
+exemplo: 
+5+2==7
+5-2==3
+5*2==10
+5/2==2.5
+5**2==25
+5//2==2 #Divisão inteira
+5%2==1 # modulo de resto da divisão
+
+--------------------------------------------------------------
+
+Ordem de precedencia
+
+# --- ORDEM DE PRECEDÊNCIA ---
+# Segue esta ordem (do primeiro para o último):
+
+# 1. ( )  - Parênteses (Tudo o que estiver dentro deles é feito primeiro)
+# 2. ** - Potência (Exponenciação)
+# 3. * / // % - Multiplicação, Divisões e Resto (Quem aparecer primeiro da esquerda para a direita)
+# 4. + -  - Adição e Subtração
+
+# EXEMPLO PRÁTICO:
+# 5 + 2 * 3  -> Primeiro faz 2*3=6, depois 5+6 = 11
+# (5 + 2) * 3 -> Primeiro faz (5+2)=7, depois 7*3 = 21
+
+# DICA: 
+# Se tiver dúvida ou quiser garantir que uma conta seja feita antes, 
+# use sempre os PARÊNTESES ( ).
+
+para abrir o console no pycharm alt +f12
+
+# ==============================================================
+# GUIA RÁPIDO: FORMATAÇÃO DE TÍTULOS E LINHAS
+# ==============================================================
+
+# Opção 1: f-string (Moderna e poderosa)
+# O texto fica entre aspas simples dentro das chaves
+
+print(f"{' DESAFIO ':=^50}") 
+
+# Opção 2: .center (Mais intuitiva)
+# Texto .center(tamanho_total, "caractere")
+print(" DESAFIO ".center(50, "="))
+
+# Opção 3: Linha simples repetida
+print("-" * 50)
+
+# ==============================================================
+# LEGENDA DOS SÍMBOLOS NA F-STRING:
+# :  -> Inicia a formatação
+# =  -> Caractere de preenchimento
+# ^  -> Centraliza o texto ( < alinha à esquerda, > à direita)
+# 50 -> Largura total da linha
+# ==============================================================
+
+Quando usar com variavel? Quando usar sem?
+
+Usar com variavel quando vc precisar do resultado depois.
+
+# ==============================================================
+# O QUE É O 'f' ANTES DAS ASPAS? (f-strings)
+# ==============================================================
+
+nome = "Lucas"
+idade = 20
+
+# SEM O 'f': O Python lê tudo como texto puro
+print("Olá {nome}, você tem {idade} anos") 
+# Saída: Olá {nome}, você tem {idade} anos
+
+# COM O 'f': O Python "ativa" as chaves e busca os valores
+print(f"Olá {nome}, você tem {idade} anos")
+# Saída: Olá Lucas, você tem 20 anos
+
+# --------------------------------------------------------------
+# POR QUE USAR?
+# 1. VELOCIDADE: É a forma mais rápida de processar texto em Python.
+# 2. LIMPEZA: Você lê a frase exatamente como ela vai aparecer.
+# 3. PODER: Pode fazer contas direto nelas: f"Dobro: {n1 * 2}"
+# ==============================================================
+
+# ==============================================================
+# GUIA DE IMPRESSÃO (PRINT) E FORMATAÇÃO NO PYTHON
+# ==============================================================
+
+# 1. O 'f' (f-string) -> O ATIVADOR DE CÓDIGO
+# Use ANTES das aspas para o Python ler o que está dentro de { }
+nome = "Python"
+print(f"Estudando {nome}")     # Saída: Estudando Python
+print(f"Soma: {5 + 5}")         # Saída: Soma: 10
+
+
+# 2. O '\n' -> O QUEBRADOR DE LINHA
+# Use DENTRO das aspas para "apertar o Enter" no meio do texto
+print("Linha 1 \nLinha 2")      
+# Saída:
+# Linha 1
+# Linha 2
+
+
+# 3. O 'end=' -> O UNIDOR DE LINHAS
+# Por padrão, o print() pula linha no final. O end='' impede isso.
+print("Olá", end=" ")           # Troca o "Enter" por um espaço
+print("Mundo!")                 # Saída: Olá Mundo! (na mesma linha)
+
+
+# 4. QUANDO USAR CADA UM? (RESUMO)
+# --------------------------------------------------------------
+# f-string  -> Sempre que precisar colocar variáveis ou contas no print.
+# \n        -> Para organizar textos longos ou fazer listas no console.
+# end=''    -> Para juntar dois prints diferentes na mesma linha do terminal.
+# ==============================================================
+
+
+
+
+# ==============================================================
+		
+			Curso Python #08 - Utilizando Módulos
+
+# ==============================================================
+
+"""
+CURSO EM VÍDEO - PYTHON (GUSTAVO GUANABARA)
+AULA 08: UTILIZANDO MÓDULOS
+
+
+# 1. A ANALOGIA DO SMARTPHONE (CONCEITO)
+# -----------------------------------------------------------
+# Imagine que o Python é um smartphone recém-saído da fábrica:
+# - Funções Built-in: O que já vem nele (Calculadora, Relógio).
+# - Módulos: São os "Aplicativos" que você baixa para dar novas 
+#   habilidades ao sistema (GPS, Jogos, Editores).
+
+# 2. POR QUE IMPORTAR?
+# -----------------------------------------------------------
+# - Economia de Memória: O Python não carrega tudo de uma vez 
+#   para não ficar lento e pesado.
+# - Organização: Você só chama o que realmente vai usar.
+
+
+# 3. AS DUAS FORMAS DE IMPORTAÇÃO
+# -----------------------------------------------------------
+
+# A) Importação Genérica: Traz a "caixa de ferramentas" inteira.
+# Sintaxe: import nome_do_modulo
+# Uso: nome_do_modulo.função()
+
+import math 
+
+num = 9.12
+print(f'Usando math.ceil: {math.ceil(num)}') # Arredonda para cima
+
+
+# B) Importação Específica: Traz apenas uma "ferramenta" da caixa.
+# Sintaxe: from nome_do_modulo import função
+# Uso: função() -> direto, sem o nome do módulo antes.
+
+from math import sqrt, floor
+
+raiz = sqrt(16) # Não precisa usar math.sqrt
+print(f'A raiz quadrada de 16 é: {raiz}')
+print(f'Usando floor (chão): {floor(9.99)}') # Arredonda para baixo
+
+
+# 4. PRINCIPAIS FUNÇÕES DO MÓDULO 'MATH'
+# -----------------------------------------------------------
+# ceil  -> Arredonda para cima (Teto)
+# floor -> Arredonda para baixo (Chão)
+# trunc -> Elimina a parte decimal (Corta a vírgula)
+# pow   -> Potência (Ex: pow(5, 2) é 25)
+# sqrt  -> Raiz Quadrada (Square Root)
+
+
+# 5. MÓDULO 'RANDOM' (NÚMEROS ALEATÓRIOS)
+# -----------------------------------------------------------
+import random
+
+# Gera um número real (float) entre 0 e 1
+num_aleatorio = random.random() 
+
+# Gera um número inteiro entre um intervalo definido (ex: 1 a 10)
+num_inteiro = random.randint(1, 10)
+
+print(f'Aleatório float: {num_aleatorio}')
+print(f'Aleatório inteiro (1-10): {num_inteiro}')
+
+
+# 6. BIBLIOTECAS INTERNAS VS EXTERNAS
+# -----------------------------------------------------------
+# Internas (Standard Library): Já vêm instaladas no Python.
+#   Exemplos: math, random, datetime, os, time.
+#
+# Externas: Feitas pela comunidade, precisam de instalação extra.
+#   Comando para instalar no terminal: pip install nome_da_biblioteca
+
+
+# DICA DE OURO:
+# No terminal do Python, digite 'help(math)' para ver o manual 
+# completo de qualquer módulo!
+
+---------------------------------------------------------------
+
+COMANDO IMPORT = traz o modulo nas primerias linhas, nome do modulo ou biblioteca.
+ex: import bebida - importa todas bebidas da biblioteca
+
+importação unico comando 
+ex: from doce import pudim - importa apenas o pudim da biblioteca doce, preciso de todos os doces, apenas pudim
+
+duas maneiras basicas:
+
+1. import
+2. from import
+
+exemplo de biblioteca padrão: math
+biblioteca interna
+
+A biblioteca math e suas funcionalidades
+ceil
+floor
+trunc
+pow
+sqrt
+factorial
+
+import match = importa tudo
+from import match sqrt = importa só a raiz quadrada
+from import match sqrt, pow = importa apenas duas funcionalidades
+
+
+CONCEITOS BÁSICOS (PARA LEIGOS)
+----------------------------------------------------------------
+1. ANALOGIA: O Python padrão é como um celular que vem de fábrica. 
+   Ele tem o básico (calculadora, relógio). Os MÓDULOS são os 
+   APLICATIVOS que você instala para dar novas funções (GPS, Jogos).
+
+2. POR QUE IMPORTAR? Os recursos não são padronizados para o 
+   sistema não ficar pesado. Você só "abastece" o corpo do seu 
+   programa com as funcionalidades que vai usar.
+----------------------------------------------------------------
+"""
+
+# 1. AS DUAS MANEIRAS BÁSICAS DE IMPORTAÇÃO
+# -----------------------------------------------------------
+
+# TIPO 1: import (Importação Geral)
+# Traz a "caixa de ferramentas" completa.
+# Ex: import bebida (Traz TODAS as bebidas da biblioteca).
+import math 
+
+num = 9
+raiz = math.sqrt(num) # Precisa dizer o nome da biblioteca (math.)
+
+
+# TIPO 2: from ... import (Importação Específica)
+# Traz apenas o que você pediu. Economiza memória e código.
+# Ex: from doce import pudim (Só traz o pudim, ignora o resto).
+from math import sqrt, pow, factorial
+
+# Uso: direto, sem precisar colocar "math." na frente.
+print(f'A raiz de 16 é {sqrt(16)}')
+print(f'O fatorial de 5 é {factorial(5)}')
+
+
+# 2. BIBLIOTECA PADRÃO: MATH (Matemática)
+# -----------------------------------------------------------
+# É uma biblioteca INTERNA (já vem com o Python).
+# Principais funcionalidades:
+
+# ceil      -> Arredonda para CIMA (Teto).
+# floor     -> Arredonda para BAIXO (Chão).
+# trunc     -> TRUNCA o número (Corta a vírgula fora).
+# pow       -> POTÊNCIA (Ex: pow(5, 2) é 5²).
+# sqrt      -> RAIZ QUADRADA (Square Root).
+# factorial -> FATORIAL (Ex: 5! = 5*4*3*2*1).
+
+
+# 3. MÓDULO RANDOM (NÚMEROS ALEATÓRIOS)
+# -----------------------------------------------------------
+import random
+
+num_int = random.randint(1, 10) # Gera um número inteiro entre 1 e 10
+print(f'Número aleatório gerado: {num_int}')
+
+
+# 4. RESUMO PARA CONSULTA RÁPIDA
+# -----------------------------------------------------------
+# [ import math ] 
+#   -> Importa TUDO. 
+#   -> Uso: math.func()
+
+# [ from math import sqrt ] 
+#   -> Importa SÓ a raiz quadrada. 
+#   -> Uso: sqrt() direto.
+
+# [ from math import sqrt, pow ] 
+#   -> Importa DUAS ou mais funcionalidades específicas.
+# -----------------------------------------------------------
+
+site para consultar a documentação: https://docs.python.org/release/3.14.0/
+
+
+
+
+
+
+# ==============================================================
+		
+			Curso Python #09 - Manipulando Texto
+
+# ==============================================================
+ 
+Trando cadeia de caracteres, manipulando cadeias de texto
+
+
+String - cadeia de texto
+
+usar aspas 'String' ou "String"
+
+
+frase = 'Curso em video' - atribuição da variavel, cria mini espaços dentro da memoria
+ficando assim, idices 'C U R S O  E M V I D E O', numero de caracteres que cabe na meoriam que no caso AQUI FICARIA '0 1 2 3 4 5 6 7 8 9 10 11 12 13' ele coube em um espaço de memoria, mas cada caractere esta em miniespaço de ememorias dentro dessa memoria
+
+Exemplo de operações:
+
+Fatiamento- Range:
+
+ex: frase[9] - CONXETE É UM IDENTIFICADOR DA LISTA, COM ESSE COMANDO VAI EXIBIR A LETRA 9 DA LISTA, QUE NO CASO SERIA O "V" de curso em video. lembra que sempre inicia no 0
+
+[] CONchetETE É UM IDENTIFICADOR DA LISTA
+
+ver MAIUSCULO não e a mesma coisa que minusculo
+
+OUTRO EX
+
+frase[9:13] começa no 9 e termina no 13, excluindo o 13, no caso pegando ate o 12, excluindo o ultimo. = video
+
+outro exemplo:
+
+frase[9:14] nesse caso ele preche tudo cortando o numero que n existe = curso em video
+
+outro ex:
+
+frase[9:14:2] ele pula de 2 em dois na leitura = vdo
+
+outro ex:
+
+frase[:6] = antes do dois pontos ele começa do 0 e vai ate 5 = curso
+
+outro ex:
+frase[6:] = vai contar do 5 até a ultimo mini espaço de memoria = em video
+
+outro ex:
+
+frase[6::3] vai começar no 5 e vai pular 3 ate o final = eve
+
+-----------------------------------------------------------------
+Analise 
+
+Analise de uma string
+
+len(frase) - comprimento da frase - 'curso em video' = 14 caracteres - 0 a 14 micro espaços
+
+len é muito utilizado
+
+frase.count('o')
+conta quantas vezes tem o o na variavel
+frase = 'Curso em video' = tem dois 'o'
+
+frase.count('o,0,13') fazer uma contagem já com o fatiamento, ele vai ler do 0 ao 12, oq corresponde a um 'o'
+
+frase.find('deo') = vai retornar a possição 11
+
+frase.find('Android') = retorna o valor -1 = oLHA ESSA STRING N EXISTE
+
+'Curso' in frase = vai escrever true, operador
+
+-------------------------------------------------------------------
+Transformação
+
+via de regra uma lista é imutavel, mas consigo mudar por metodos
+
+frase.replace('Python','Android') = trocar
+Vai procurar por python e subistuir por android
+Não subistiu na string
+
+frase.upper() = pra cima, Maiusculas
+frase.lower() = pra baixo, minuscula
+frase.capitalize() = Todas para minucuslo, a primeira letra fica maiusculo
+frase.title() analisa quantas palavras e traz a cada palvra a primeira em maiuscula
+
+frase.stip() remove os espaços inutes da string
+frase.rstrip() variação r, ela remove apenas os ultimos espaços
+frase.lstrip() remove os espaços da esquerda
+
+-----------------------------------------------------------------------------
+Divisão
+
+frase.split() divisão por espaço, cria divisão entre os espaços. divide o indices, refaz conforme os espaços, gerando umas listas, cada elemento vai ter seu proprio identidficador
+
+------------------------------------------------------------------------------------
+junção
+
+'-'.join(frase) = vc vai juntar todos os elementos e adicionar os traços no espaços da string
+
+--------------------------------------------------------------------------------------------
+
+# CONCEITO BÁSICO
+# String (str) é uma cadeia de caracteres (texto).
+# O Python armazena cada caractere em um índice numérico que começa em 0.
+# Exemplo: frase = "Curso em Video"
+# C  u  r  s  o     e  m     V  i  d  e  o
+# 0  1  2  3  4  5  6  7  8  9  10 11 12 13
+
+# ------------------------------------------------------------------------------
+# 1. FATIAMENTO (SLICING) - [início : fim : passo]
+# ------------------------------------------------------------------------------
+# frase[9]       -> Pega o caractere no índice 9 (V).
+# frase[9:13]    -> Pega do 9 até o 12 (VIDEO - exclui o último índice).
+# frase[9:14]    -> Pega do 9 até o final (mesmo que o índice 14 não exista).
+# frase[9:14:2]  -> Pega do 9 ao 13 pulando de 2 em 2 (V d o).
+# frase[:5]      -> Do início (0) até o 4 (Curso).
+# frase[5:]      -> Do 5 até o final ( em Video).
+# frase[5::3]    -> Começa no 5 e pula de 3 em 3 até o fim (e v d).
+
+# ------------------------------------------------------------------------------
+# 2. ANÁLISE (DESCOBRIR INFORMAÇÕES)
+# ------------------------------------------------------------------------------
+# len(frase)          -> Comprimento da string (14 caracteres).
+# frase.count('o')    -> Conta quantas vezes aparece a letra 'o'.
+# frase.find('deo')   -> Indica em qual índice começou a palavra 'deo' (11).
+# frase.find('Android')-> Retorna -1 (Significa que a string NÃO foi encontrada).
+# 'Curso' in frase    -> Retorna True
+
+# ------------------------------------------------------------------------------
+# 3. TRANSFORMAÇÃO (MÉTODOS DE CÓPIA)
+# Lembre-se: Strings são imutáveis. Os métodos abaixo geram uma NOVA string.
+# ------------------------------------------------------------------------------
+# frase.replace('Python', 'Android') -> Substitui uma palavra por outra.
+# frase.upper()      -> TUDO EM MAIÚSCULO.
+# frase.lower()      -> tudo em minúsculo.
+# frase.capitalize() -> Só a primeira letra da FRASE em maiúsculo.
+# frase.title()      -> Primeira letra de CADA PALAVRA em maiúsculo.
+
+# Limpeza de espaços (Stripping):
+# frase.strip()      -> Remove espaços inúteis no INÍCIO e no FIM.
+# frase.rstrip()     -> Remove espaços apenas da DIREITA (right).
+# frase.lstrip()     -> Remove espaços apenas da ESQUERDA (left).
+
+# ------------------------------------------------------------------------------
+# 4. DIVISÃO E JUNÇÃO
+# ------------------------------------------------------------------------------
+# frase.split()      -> Divide a frase pelos espaços, gerando uma LISTA de palavras.
+#                       Ex: ['Curso', 'em', 'Video']
+
+# '-'.join(lista)    -> Junta os itens de uma lista usando o separador '-' entre eles.
+#                       Ex: 'Curso-em-Video'
+
+# ------------------------------------------------------------------------------
+# DICAS DE OURO:
+# ------------------------------------------------------------------------------
+# - O Python é Case Sensitive: 'A' é diferente de 'a'.
+# - Você pode encadear métodos: frase.strip().upper()
+# - Para textos longos (várias linhas), use aspas triplas: """ Texto aqui """
+# ==============================================================================
+# ==============================================================================
+#                      DICAS AVANÇADAS (POWER USER)
+# ==============================================================================
+
+# 5. ÍNDICES NEGATIVOS (De trás para frente)
+#  P  y  t  h  o  n
+# -6 -5 -4 -3 -2 -1
+# frase[-1]          -> Última letra ('n').
+# frase[-3:]         -> As últimas 3 letras ('hon').
+# frase[::-1]        -> Inverte a string ('nohtyP').
+
+# 6. IMUTABILIDADE
+# Métodos (upper, strip, etc) NÃO alteram a variável original.
+# Para salvar a alteração, você deve reatribuir:
+# nome = nome.strip().title()
+
+# 7. CARACTERES ESPECIAIS (ESCAPE CODES)
+# \n                 -> Pula linha (New Line).
+# \t                 -> Tabulação (espaço de parágrafo).
+# print("-" * 30)    -> Imprime 30 traços de uma vez.
+
+# 8. MÉTODOS DE TESTE (Retornam True ou False)
+# frase.isalnum()    -> É alfanumérico (letras e números)?
+# frase.isalpha()    -> É apenas alfabético (letras)?
+# frase.isnumeric()  -> É apenas números?
+# frase.isspace()    -> Tem apenas espaços?
+# ===========================================================
+
+
+
+
+
+# ==============================================================
+		
+			Curso Python #10 - Condições (Parte 1)
+
+# ==============================================================
+
+
+Codições exemplo ludico
+
+carro e estrada. qual o caminho que vc vai fazer do ponto A ou B? precisa das instruçoes do computador
+
+estrutura sequencial:
+inicio
+carro.siga()
+carro.esquerda()
+carro.siga()
+carro.direita()
+carro.siga()
+chegou no destino
+
+isso são comandos sequenciais. 
+
+sentido de leitura de baixxo pra cima, da esquerda para direita
+----------------------------------------------------------------------------
+Nem todos os programas segue programas sequenciais. nem todo caminho é simples
+
+carro ponto de chegada
+
+carro siga()
+bifurcação ou carro vira para direita ou para esquerda
+abriu dois blocos de caminhos diferentes, posibilidades dentro do programa
+explos de carro ate o caminho da esquerda() sequencia
+exemplo do carro pelo caminho da direita() sequencia
+
+siga()
+caminho da direita() fluxo a
+caminho da esquerda() fluxo b
+pare()
+
+se carro.esquerda(fluxo b) senão(fluxo a)
+programação identada
+
+oq é identação??
+bloco verdadeiro
+se não
+caminho de baixo
+carro.siga () carro.pare() sempre vao acontecer
+
+estrutura condicional
+
+se carro.esquerda()   if carro.esquerda():
+	bloco_v_           	bloco True
+se senão					 else:
+	bloco_f_				 	bloco False
+---------------------------------------------------------------------------------------
+Nunca esqueca de colocar os dois :
+
+Estrutura condicional:
+
+if carro.esquerda():
+	bloco True
+ else:
+	bloco False
+
+tempo = int(input('Quantos anos tem seu carro?'))
+
+if tempo <=3:
+	print('Seu carro é novo')
+
+else:
+	print('Seu carro é velho')
+print('--Fim--')
+
+condição simplificada explicação:
+parecido com operador tenario, python n tem operador ternario
+tempo=int(input('Quantos anos tem seu carro?'))
+print('carro novo' if tempo <=3 else 'carro velho')
+print('--fim--')
+
+
+# 1. CONCEITO LÚDICO: O Caminho do Carro
+# Imagine uma estrada. Em uma estrutura SEQUENCIAL, o carro vai do ponto A ao B
+# sem nunca desviar. Em uma estrutura CONDICIONAL, há uma bifurcação.
+
+# Exemplo Sequencial:
+# Início -> carro.siga() -> carro.vire() -> Chegada (Caminho único)
+
+# Exemplo Condicional (Bifurcação):
+#           /-- [Esquerda] -- bloco_verdadeiro --\
+# Início --|                                      |-- Chegada
+#           \-- [Direita]  -- bloco_falso ------/
+
+# 2. A REGRA DE OURO: IDENTAÇÃO
+# No Python, tudo o que estiver "empurrado" para a direita (Tab) pertence ao bloco.
+# O que estiver encostado na margem esquerda acontece INDEPENDENTE da condição.
+
+# 3. ESTRUTURA BÁSICA (IF / ELSE)
+# if <condição>:    <- Não esqueça os dois pontos!
+#     bloco True    <- O que acontece se for Verdade
+# else:             <- Senão... (também tem dois pontos!)
+#     bloco False   <- O que acontece se for Mentira
+
+# --- EXEMPLO PRÁTICO ---
+tempo = int(input('Quantos anos tem seu carro? '))
+
+if tempo <= 3:
+    print('Seu carro está novinho!')  # Bloco Verdadeiro
+else:
+    print('Seu carro já é um clássico...') # Bloco Falso
+
+print('-- FIM --') # Este comando sempre será executado (fora da condição)
+
+# ------------------------------------------------------------------------------
+# 4. CONDIÇÃO SIMPLIFICADA (ESTILO "TERNÁRIO")
+# ------------------------------------------------------------------------------
+# Útil para códigos rápidos e curtos. O Python não tem o operador '?' como o C#, 
+# mas permite escrever a lógica em uma única linha:
+
+tempo = int(input('Anos do carro: '))
+status = 'Novo' if tempo <= 3 else 'Velho'
+print(f'Seu carro é {status}')
+
+# ------------------------------------------------------------------------------
+# DICAS PARA O RESUMO:
+# ------------------------------------------------------------------------------
+# - Toda condição retorna um valor BOOLEANO (True ou False).
+# - O 'if' pode existir sozinho, mas o 'else' precisa sempre de um 'if' antes.
+# - A identação padrão do Python são 4 ESPAÇOS (ou 1 TAB).
+# ==============================================================================
+
+
+# 1. CONCEITO: ESTRUTURA SEQUENCIAL VS. CONDICIONAL
+# Sequencial: O código roda de cima para baixo, linha por linha, sem desvios.
+# Condicional: O código encontra uma "bifurcação" (if). Ele decide qual caminho
+# seguir baseado em uma condição (Verdadeira ou Falsa).
+
+# 2. OPERADORES RELACIONAIS (OS COMPARADORES)
+# São os "juízes" que decidem se a condição é True (V) ou False (F).
+
+# ==  Igual a               (Pergunta se os valores são idênticos)
+# !=  Diferente de          (Pergunta se os valores são distintos)
+# >   Maior que
+# <   Menor que
+# >=  Maior ou igual a
+# <=  Menor ou igual a
+
+# ATENÇÃO: Jamais confunda '=' (recebe/atribui) com '==' (compara).
+# n = 5  -> A variável n recebe o valor 5.
+# n == 5 -> "O valor dentro de n é igual a 5?" (Resposta: True ou False).
+
+# ------------------------------------------------------------------------------
+# 3. IDENTAÇÃO E BLOCOS (A REGRA DE OURO)
+# ------------------------------------------------------------------------------
+# No Python, a "margem" (espaço no início da linha) define o que está "dentro".
+# Use 4 espaços (ou 1 TAB) para identar.
+
+# if condição:
+# ____bloco_verdadeiro    <- Executado apenas se a condição for True
+# else:
+# ____bloco_falso         <- Executado apenas se a condição for False
+# bloco_sempre            <- Executado sempre (está fora da condição)
+
+# ------------------------------------------------------------------------------
+# 4. EXEMPLO DE ESTRUTURA COMPOSTA
+# ------------------------------------------------------------------------------
+nome = str(input('Qual seu nome? ')).strip().title()
+
+if nome == 'Gustavo':
+    print('Que nome lindo você tem!')
+else:
+    print('Seu nome é tão normal...')
+
+print(f'Bom dia, {nome}!')
+
+# ------------------------------------------------------------------------------
+# 5. CONDIÇÃO SIMPLIFICADA (ESTILO TERNÁRIO)
+# ------------------------------------------------------------------------------
+# Usado para economizar linhas em decisões muito simples.
+tempo = int(input('Quantos anos tem seu carro? '))
+
+print('Carro Novo' if tempo <= 3 else 'Carro Velho')
+
+# ------------------------------------------------------------------------------
+# 6. MÉTODOS DE STRING COMO CONDIÇÃO
+# ------------------------------------------------------------------------------
+# Métodos que começam com "is" já retornam True ou False por padrão.
+algo = input('Digite algo: ')
+
+if algo.isnumeric():
+    print('Você digitou um número!')
+else:
+    print('Isso não é um número.')
+
+# ==============================================================================
+# DICA DE MESTRE: O 'if' só abre a porta se o resultado for TRUE.
+# Se você digitar: if 10 > 5:  -> O Python entende: if True:
+# ==============================================================================
+
+
+# ==============================================================================
+#                 CURSO PYTHON #11- Cores no Terminal
+# ==============================================================================
+
+ansi - escape sequence
+codigo ansi para cores em python
+
+sempre usar: \003[style, text, back m 
+	exemplo: \003[0;33;44m
+
+codigos para style = 0,1,4,7
+	0 = none
+	1 = bold
+	4 = inderline
+	7 = negative
+
+
+codigos para text = 30, 31, 32, 33, 34, 35, 36, 37
+	30 = branco
+	31 = vermelho
+	32 = verde
+	33 = amarelo
+	34 = azul
+	35 = roxo
+	36 = azul bebe
+	37 = cinza 
+
+ codigos para back = 40 a 47
+ 	40 = branco
+ 	41 = vermelho
+	42 = verde
+	43 = amarelo
+	44 = azul
+	45 = roxo
+	46 = azul bebe
+	47 = cinza 
+
+ para usar mais cores é preciso importar biblioteca.
+
+ testes:
+
+ 	fundo vermelho e texto branco: \003[0;30;41m
+
+ 	fundo azul e letra sublinhada e texto amarelo: \003[4;33;46m
+
+ 	fundo amarelo e letra roxa: \003[0;35;43m
+
+ 	fundo verde e letra branco: \003[0;30;42m
+
+ 	fundo preto e letra cinza: \003[4;33;46m
+
+ 	fundo branco e letra preta: \003[4;33;46m
+
